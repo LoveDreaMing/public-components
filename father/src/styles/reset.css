@@ -1,0 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.child1 {
+    font-size: 20px;
+}
+
+.child2 {
+    font-size: 12px;
+}
