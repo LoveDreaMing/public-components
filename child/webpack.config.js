@@ -1,6 +1,6 @@
 const isProduction = process.env.NODE_ENV === 'production';
 // const getSyncEntries = require('./utils/getSyncEntries'); // 同步读取组件入口
-// const getAsyncEntries = require('./utils/getAsyncEntries'); // 异步读取组件入口
+const getAsyncEntries = require('./utils/getAsyncEntries'); // 异步读取组件入口
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -14,8 +14,8 @@ const config = {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? false : 'source-map',
     // entry: isProduction ? getSyncEntries() : './examples/main.js',
-    // entry: isProduction ? () => getAsyncEntries() : './examples/main.js',
-    entry: isProduction ? './packages/main.js' : './examples/main.js',
+    entry: isProduction ? () => getAsyncEntries() : './examples/main.js',
+    // entry: isProduction ? './packages/main.js' : './examples/main.js',
     output: {
         filename: `lib.[name].js`,
         path: path.resolve(__dirname, 'dist'),

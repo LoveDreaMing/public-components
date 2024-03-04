@@ -12,7 +12,10 @@ function getAsyncEntries() {
             }
             const entries = {};
             for (let file of files) {
-                entries[file] = `./packages/${file}/index.js`;
+                const isDirectory = fs.lstatSync(path.resolve(__dirname, `../packages/${file}`)).isDirectory();
+                if (isDirectory) {
+                    entries[file] = `./packages/${file}/index.js`;
+                }
             }
             resolve(entries);
         });

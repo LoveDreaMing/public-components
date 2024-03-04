@@ -8,8 +8,11 @@ function getSyncEntries() {
     const entries = {};
     const files = fs.readdirSync(path.resolve(__dirname, '../packages'));
     for (let i = 0; i < files.length; i++) {
-        const name = files[i];
-        entries[name] = `./packages/${name}/index.js`;
+        const file = files[i];
+        const isDirectory = fs.lstatSync(path.resolve(__dirname, `../packages/${file}`)).isDirectory();
+        if (isDirectory) {
+            entries[file] = `./packages/${file}/index.js`;
+        }
     }
     return entries;
 }
