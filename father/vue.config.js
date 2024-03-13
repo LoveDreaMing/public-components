@@ -7,5 +7,10 @@ module.exports = defineConfig({
     transpileDependencies: true,
     devServer: {
         port: 9090
+    },
+    configureWebpack: {
+        externals: {
+            vue: 'Vue'
+        }
     }
 });

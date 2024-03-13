@@ -3,6 +3,12 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const a = ref(123);
+console.log(a);
+
+
 const props = defineProps({
     msg: String
 });

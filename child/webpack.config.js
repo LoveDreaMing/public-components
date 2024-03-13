@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-
 /**
  * @type {import('webpack').Configuration}
  */
@@ -27,7 +26,7 @@ const config = {
     resolve: {
         alias: {
             '@p': path.resolve(__dirname, 'packages'),
-            '@e': path.resolve(__dirname, 'examples'),
+            '@e': path.resolve(__dirname, 'examples')
         }
     },
     module: {
@@ -87,12 +86,15 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: 'public/index.html',
             inject: 'body',
             minify: false
         }),
         new VueLoaderPlugin()
-    ].concat(isProduction ? [new CleanWebpackPlugin()] : [])
+    ].concat(isProduction ? [new CleanWebpackPlugin()] : []),
+    externals: {
+        vue: 'Vue'
+    }
 };
 
 module.exports = config;
