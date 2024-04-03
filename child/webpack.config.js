@@ -5,6 +5,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 /**
  * @type {import('webpack').Configuration}
@@ -90,7 +91,8 @@ const config = {
             inject: 'body',
             minify: false
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new ESLintPlugin()
     ].concat(isProduction ? [new CleanWebpackPlugin()] : []),
     externals: {
         vue: 'Vue'
