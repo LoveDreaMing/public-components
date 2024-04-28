@@ -1,6 +1,6 @@
 const isProduction = process.env.NODE_ENV === 'production';
-// const getSyncEntries = require('./utils/getSyncEntries'); // 同步读取组件入口
-const getAsyncEntries = require('./utils/getAsyncEntries'); // 异步读取组件入口
+// const getSyncEntries = require('./src/utils/getSyncEntries'); // 同步读取组件入口
+const getAsyncEntries = require('./src/utils/getAsyncEntries'); // 异步读取组件入口
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -26,8 +26,7 @@ const config = {
     },
     resolve: {
         alias: {
-            '@p': path.resolve(__dirname, 'packages'),
-            '@e': path.resolve(__dirname, 'examples')
+            '@': path.resolve(__dirname, 'src')
         }
     },
     module: {
@@ -92,7 +91,9 @@ const config = {
             minify: false
         }),
         new VueLoaderPlugin(),
-        new ESLintPlugin()
+        new ESLintPlugin({
+            extensions: ['js', 'vue']
+        })
     ].concat(isProduction ? [new CleanWebpackPlugin()] : []),
     externals: {
         vue: 'Vue'

@@ -6,7 +6,6 @@ module.exports = {
     extends: [
         'plugin:vue/essential',
         'eslint:recommended',
-        '@58fe/58fe',
         'plugin:prettier/recommended'
     ],
     parserOptions: {

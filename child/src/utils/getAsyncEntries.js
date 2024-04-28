@@ -14,7 +14,7 @@ function getAsyncEntries() {
             for (let file of files) {
                 const isDirectory = fs.lstatSync(path.resolve(__dirname, `../packages/${file}`)).isDirectory();
                 if (isDirectory) {
-                    entries[file] = `./packages/${file}/index.js`;
+                    entries[file] = `./src/packages/${file}/index.js`;
                 }
             }
             resolve(entries);

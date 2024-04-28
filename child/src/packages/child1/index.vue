@@ -1,5 +1,5 @@
 <template>
-    <div class="child2" @click="onHandleClick">{{ msg || 'child2' }}</div>
+    <div class="child1" @click="onHandleClick">{{ props.msg || 'child1' }}</div>
 </template>
 
 <script setup>
@@ -8,18 +8,19 @@ const props = defineProps({
 });
 
 const emits = defineEmits(['outClick']);
+
 const onHandleClick = () => {
     emits('outClick');
 };
 </script>
 
 <style scoped lang="scss">
-.child2 {
+.child1 {
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
+    background-color: red;
     color: #fff;
 }
 </style>

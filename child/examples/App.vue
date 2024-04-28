@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import Child1 from '@p/child1';
-import Child2 from '@p/child2';
+import Child1 from '@/packages/child1';
+import Child2 from '@/packages/child2';
 
 const inClick1 = () => {
     console.log('点击组件111');

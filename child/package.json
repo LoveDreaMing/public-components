@@ -10,7 +10,6 @@
     "author": "LoveDreaMing",
     "license": "ISC",
     "devDependencies": {
-        "@58fe/eslint-config-58fe": "^2.0.0",
         "@babel/core": "^7.23.9",
         "@babel/eslint-parser": "^7.24.1",
         "@babel/preset-env": "^7.23.9",
