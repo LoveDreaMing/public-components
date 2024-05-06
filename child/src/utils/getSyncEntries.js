@@ -11,7 +11,7 @@ function getSyncEntries() {
         const file = files[i];
         const isDirectory = fs.lstatSync(path.resolve(__dirname, `../packages/${file}`)).isDirectory();
         if (isDirectory) {
-            entries[file] = `./src/packages/${file}/index.js`;
+            entries[file] = `./src/packages/${file}/index.ts`;
         }
     }
     return entries;

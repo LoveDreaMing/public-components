@@ -13,9 +13,9 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const config = {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? false : 'source-map',
-    // entry: isProduction ? getSyncEntries() : './examples/main.js',
-    entry: isProduction ? () => getAsyncEntries() : './examples/main.js',
-    // entry: isProduction ? './packages/main.js' : './examples/main.js',
+    // entry: isProduction ? getSyncEntries() : './examples/main.ts',
+    entry: isProduction ? () => getAsyncEntries() : './examples/main.ts',
+    // entry: isProduction ? './packages/main.ts' : './examples/main.ts',
     output: {
         filename: `lib.[name].js`,
         path: path.resolve(__dirname, 'dist'),
@@ -27,7 +27,8 @@ const config = {
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src')
-        }
+        },
+        extensions: ['.ts', '.js', '.vue'] // 按顺序解析未添加后缀名的同名文件
     },
     module: {
         rules: [
@@ -73,6 +74,20 @@ const config = {
                         loader: 'babel-loader',
                         options: {
                             presets: ['@babel/preset-env']
+                        }
+                    }
+                ]
+            },
+            // 处理ts文件
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            // vue 单文件组件中假如使用了lang="ts"，ts-loader需要配置appendTsSuffixTo: [/\.vue$/]，用来给.vue文件添加个.ts后缀用于编译
+                            appendTsSuffixTo: [/\.vue$/]
                         }
                     }
                 ]

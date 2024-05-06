@@ -2,7 +2,7 @@
     <div class="child2" @click="onHandleClick">{{ props.msg || 'child2' }}</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
     msg: String
 });
