@@ -107,7 +107,7 @@ const config = {
         }),
         new VueLoaderPlugin(),
         new ESLintPlugin({
-            extensions: ['js', 'vue'] // 指定检查的文件类型，默认值：'js'
+            extensions: ['js', 'vue', 'ts'] // 指定检查的文件类型，默认值：'js'
         })
     ].concat(isProduction ? [new CleanWebpackPlugin()] : []),
     externals: {
